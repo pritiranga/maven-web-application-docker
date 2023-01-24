@@ -4,7 +4,7 @@ pipeline{
 		terraform "Terraform"
 	}
 
-	environments{
+	environment {
 		AWS_key = credentials("AWS")
 	}
 
