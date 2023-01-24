@@ -5,7 +5,7 @@ pipeline{
 	}
 
 	stages{
-		stage("Check Terraform Version"){
+		stage("Check Terraform-Version"){
 			steps{
 				sh 'terraform --version'
 			}
