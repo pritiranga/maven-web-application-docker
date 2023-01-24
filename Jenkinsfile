@@ -4,6 +4,10 @@ pipeline{
 		terraform "Terraform"
 	}
 
+	environments{
+		AWS_key = credentials("AWS")
+	}
+
 	stages{
 		stage("Check Terraform Version"){
 			steps{
