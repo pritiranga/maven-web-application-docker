@@ -27,5 +27,11 @@ pipeline{
 			}
 		}
 
+		stage('Terraform apply'){
+			steps{
+				sh 'terraform apply --auto-approve'
+			}
+		}
+
 	} //stages closing
 } //pipeline closing
