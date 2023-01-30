@@ -1,6 +1,6 @@
 variable "key" {
   type        = string
-  default     = "task_demo"
+  default     = "task-demo"
   description = "description"
 }
 
@@ -31,5 +31,26 @@ variable "versioning" {
   default     = true
   description = "description"
 }
+
+variable "key_name" {
+  type        = string
+  default     = "jenkinspipeline-terra"
+  description = "description"
+}
+
+variable "public_key" {
+  type        = string
+  default     = "test.pub"
+  description = "description"
+}
+
+variable "private_key" {
+  type        = string
+  default     = "test.pem"
+  description = "description"
+}
+
+
+
 
 
