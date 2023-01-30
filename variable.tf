@@ -19,3 +19,17 @@ variable "instance_type" {
 variable "bucket_prefix"{
     default = "terrform-jenkins"
 }
+
+variable "acl" {
+  type        = string
+  default     = "private"
+  description = "description"
+}
+
+variable "versioning" {
+  type        = string
+  default     = true
+  description = "description"
+}
+
+
