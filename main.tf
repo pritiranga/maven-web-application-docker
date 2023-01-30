@@ -7,3 +7,5 @@ resource "aws_instance" "dev_terra" {
     Env = "dev"
   }
 }
+
+
