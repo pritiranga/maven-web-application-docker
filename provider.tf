@@ -6,17 +6,17 @@ terraform {
 
       source  = "kreuzwerker/docker"
 
-      version = "2.15.0"
+      version = "3.0.1"
 
     }
 
-    aws = {
+    # aws = {
 
-      source  = "hashicorp/aws"
+    #   source  = "hashicorp/aws"
 
-      version = "~> 4.16"
+    #   version = "~> 4.16"
 
-    }
+    # }
 
   }
 
@@ -26,9 +26,9 @@ provider "docker" {
   host = "unix:///var/run/docker.sock"
 }
 
-provider "aws" {
-  region  = "us-east-1"
-}
+# provider "aws" {
+#   region  = "us-east-1"
+# }
 
 
 
