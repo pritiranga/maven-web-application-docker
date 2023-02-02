@@ -3,7 +3,7 @@ terraform {
   required_providers {
     docker = {
         source = "kreuzwerker/docker"
-        version = "2.16.0"
+        version = "3.0.1"
     }
 
     aws = {
@@ -17,6 +17,7 @@ terraform {
 # Specifying the Docker provider configuration
 provider "docker" {
     host = "unix:///var/run/docker.sock"
+    version = "~> 3.0.1"
 }
 
 provider "aws" {
