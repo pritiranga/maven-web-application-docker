@@ -2,7 +2,6 @@ pipeline{
 	agent any
 	tools{
 		terraform "Terraform"
-		docker "DOCKER"
 	}
 
 	environment {
