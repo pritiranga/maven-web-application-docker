@@ -10,13 +10,13 @@ terraform {
 
     }
 
-    # aws = {
+    aws = {
 
-    #   source  = "hashicorp/aws"
+      source  = "hashicorp/aws"
 
-    #   version = "~> 4.16"
+      version = "~> 4.16"
 
-    # }
+    }
 
   }
 
