@@ -16,7 +16,7 @@
 
 # Creating a Docker Image ubuntu with the latest as the Tag
 resource "docker_image" "tomcat" {               
-  name = "tomcat:"
+  name = "tomcat:8.0.20-jre8"
 }
 
 # Creating a Docker Container using the latest ubuntu image
