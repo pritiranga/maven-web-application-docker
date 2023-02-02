@@ -17,7 +17,6 @@ terraform {
 # Specifying the Docker provider configuration
 provider "docker" {
     host = "unix:///var/run/docker.sock"
-    version = "~> 3.0.1"
 }
 
 provider "aws" {
