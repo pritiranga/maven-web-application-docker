@@ -26,9 +26,9 @@ provider "docker" {
   host = "unix:///var/run/docker.sock"
 }
 
-# provider "aws" {
-#   region  = "us-east-1"
-# }
+provider "aws" {
+  region  = "us-east-1"
+}
 
 
 #creating ec2 instance 
