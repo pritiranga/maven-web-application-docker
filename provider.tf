@@ -24,5 +24,9 @@ terraform {
 
 provider "docker" {}
 
+provider "aws" {
+  region  = "us-east-1"
+}
+
 
 
