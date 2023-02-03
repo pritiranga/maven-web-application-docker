@@ -6,7 +6,7 @@ resource "aws_instance" "ec2" {
     ami = var.ami 
     instance_type = var.instance_type
     key_name= var.key
-    aws_security_group = data.aws_security_group.demosg.id
+    security_group = data.aws_security_group.demosg.id
 
     # Attaching Tag to Instance 
     tags = {
