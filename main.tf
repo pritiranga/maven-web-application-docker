@@ -17,6 +17,7 @@ resource "aws_instance" "ec2" {
     ami = var.ami 
     instance_type = var.instance_type
     key_name= var.key
+    security_groups = "sg-0426fcc5469e1658e"
 
     # SSH into instance 
     connection {
