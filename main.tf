@@ -37,10 +37,11 @@ resource "aws_instance" "ec2" {
     provisioner "remote-exec" {
         inline = [
             # "sudo apt update -y",
-            "sudo groupadd docker",
+            # "sudo groupadd docker",
             # "sudo usermod -aG docker $USER",
             # "sudo newgrp docker",
             # "sudo apt install docker.io",
+            "docker --version"
             # "sudo chmod 666 /var/run/docker.sock"
         ]
     }
