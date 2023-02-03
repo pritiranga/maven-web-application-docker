@@ -135,13 +135,15 @@ resource "aws_instance" "ec2" {
     provisioner "remote-exec" {
         inline = [
             "sudo apt update -y",
-            # "sudo groupadd docker",
-            # "sudo usermod -aG docker $USER",
-            # "sudo newgrp docker",
-            # "sudo apt install docker.io",
-            # "docker --version",
-            # "docker pull pritidevops/webapp:latest ."
-            # "sudo chmod 666 /var/run/docker.sock"
+            "sudo groupadd docker",
+            "sudo usermod -aG docker $USER",
+            "sudo newgrp docker",
+            "sudo apt install docker.io",
+            "docker --version",
+            "sudo chmod 666 /var/run/docker.sock",
+            "docker pull pritidevops/webapp:latest ."
+            "docker run -itd -p 8080:8080 pritidevops/webapp:latest --name web-app"
+            
         ]
     }
 }
