@@ -18,7 +18,7 @@ resource "aws_instance" "demoinstance1" {
   
     # SSH into instance 
     connection {
-        
+        host = self.public_ip
         user = "ubuntu"   # The default username for our AMI
         
         private_key = "${file(var.private_key)}"   # Private key for connection
