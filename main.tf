@@ -3,7 +3,7 @@ resource "aws_instance" "ec2" {
     instance_type = var.instance_type
     key_name= var.key
     
-    data "aws_security_group" "selected" {
+    data "aws_security_group" "demosg" {
         id ="sg-06f293b32926c8afc"  
     }
 
