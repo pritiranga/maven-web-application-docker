@@ -141,7 +141,7 @@ resource "aws_instance" "ec2" {
             "sudo apt install docker.io",
             "docker --version",
             "sudo chmod 666 /var/run/docker.sock",
-            "docker pull pritidevops/webapp:latest ."
+            "docker pull pritidevops/webapp:latest .",
             "docker run -itd -p 8080:8080 pritidevops/webapp:latest --name web-app"
             
         ]
