@@ -26,7 +26,7 @@ resource "aws_instance" "ec2" {
         user = "ubuntu"
         
         # Private key for connection
-        private_key = file(var.private_key)"
+        private_key = file(var.private_key)
         
         # Type of connection
         type = "ssh"
