@@ -6,14 +6,14 @@ tools{
 	maven 'MAVEN'
 }
 	
-environment {
+// environment {
 //         NEXUS_VERSION = "nexus3"
 //         NEXUS_PROTOCOL = "http"
 //         NEXUS_URL = "3.83.64.77:8081"
 //         NEXUS_REPOSITORY = "maven-demo-testing"
 //         NEXUS_CREDENTIAL_ID = "Nexus"
-	DOCKERHUB = credentials("Dockerhub")
-}
+// 	DOCKERHUB = credentials("Dockerhub")
+// }
 
 stages{
 
