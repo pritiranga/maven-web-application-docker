@@ -1,17 +1,17 @@
 variable "key" {
   type        = string
-  default     = "terrakey"
+  default     = "terra-key"
   description = "description"
 }
 
 # Defining Private Key
 variable "private_key" {
-  default = "terrakey.pem"
+  default = "terra-key.pem"
 }
 
 # Defining Public Key
 variable "public_key" {
-  default = "terrakey.pub"
+  default = "terra-key.pub"
 }
 
 variable "region" {

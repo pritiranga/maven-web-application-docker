@@ -21,38 +21,39 @@ resource "aws_key_pair" "generated_key" {
   }
 }
 
-resource "aws_instance" "ec2" {
-    ami = var.ami 
-    instance_type = var.instance_type
-    key_name= var.key
+# resource "aws_instance" "ec2" {
+#     ami = var.ami 
+#     instance_type = var.instance_type
+#     key_name= var.key
+#     security_groups = "Default"
 
-    # SSH into instance 
-    connection {
+#     # SSH into instance 
+#     connection {
         
-        # The default username for our AMI
-        user = "ubuntu"
+#         # The default username for our AMI
+#         user = "ubuntu"
         
-        # Private key for connection
-        private_key = "${file(var.private_key)}"
+#         # Private key for connection
+#         private_key = file(var.private_key)"
         
-        # Type of connection
-        type = "ssh"
+#         # Type of connection
+#         type = "ssh"
 
-        host = self.public_ip
-    }
+#         host = self.public_ip
+#     }
 
-    # Installing docker on newly created instance
-    provisioner "remote-exec" {
-        inline = [
-            "sudo apt update -y",
-            "sudo groupadd docker",
-            "sudo usermod -aG docker $USER",
-            "sudo newgrp docker",
-            "sudo apt install docker.io",
-            "sudo chmod 666 /var/run/docker.sock"
-        ]
-    }
-}
+#     # Installing docker on newly created instance
+#     provisioner "remote-exec" {
+#         inline = [
+#             "sudo apt update -y",
+#             "sudo groupadd docker",
+#             "sudo usermod -aG docker $USER",
+#             "sudo newgrp docker",
+#             "sudo apt install docker.io",
+#             "sudo chmod 666 /var/run/docker.sock"
+#         ]
+#     }
+# }
 
 
 
