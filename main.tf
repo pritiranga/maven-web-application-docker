@@ -21,13 +21,6 @@ resource "aws_key_pair" "generated_key" {
   }
 }
 
-provider "aws" {
-   region     = "eu-central-1"
-   access_key = "AKIATQ37NXB2BYDxxxxx"
-   secret_key = "JzZKiCia2vjbq4zGGGewdbOhnacm2QIMgcBxxxxx"
-   
-}
-
 resource "aws_instance" "ec2" {
     ami = var.ami 
     instance_type = var.instance_type
