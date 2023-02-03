@@ -10,13 +10,12 @@ resource "aws_key_pair" "generated_key" {
     key_name   = var.key
 
     # Public Key: The public will be generated using the reference of tls_private_key.terrafrom_generated_private_key
-    public_key = tls_private_key.terrafrom_generated_private_key.public_key_openssh
+    public_key = tls_private_key.terrafrom_generated_private_key.public_key_openssh   
+}
 
-    # Store private key :  Generate and save private key(aws_keys_pairs.pem) in current directory
-    resource "local_file" "TF_key" {
+resource "local_file" "TF_key" {
         content = tls_private_key.rsa.private_key_pem
         filename = var.private_key
-    }
 }
 
 # resource "aws_instance" "ec2" {
