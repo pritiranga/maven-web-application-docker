@@ -1,21 +1,16 @@
-#Generating aws key-pairs
-resource "tls_private_key" "terrafrom_generated_private_key" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
+resource "aws_key_pair" "TF-key" {
+    key_name = var.key
+    public_key = tls_private_key.rsa.public_key_openssh
 }
 
-resource "aws_key_pair" "generated_key" {
-
-    # Name of key : Write the custom name of your key
-    key_name   = var.key
-
-    # Public Key: The public will be generated using the reference of tls_private_key.terrafrom_generated_private_key
-    public_key = tls_private_key.terrafrom_generated_private_key.public_key_openssh   
+resource "tls_private_key" "rsa" {
+    algorithm = "RSA"
+    rsa_bits = 4096
 }
 
 resource "local_file" "TF_key" {
-        content = tls_private_key.rsa.private_key_pem
-        filename = var.private_key
+    content = tls_private_key.rsa.private_key_pem
+    filename = var.private_key
 }
 
 # resource "aws_instance" "ec2" {
