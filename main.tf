@@ -1,11 +1,16 @@
+data "aws_security_group" "demosg" {
+    id ="sg-06f293b32926c8afc"  
+}
+
 resource "aws_instance" "ec2" {
     ami = var.ami 
     instance_type = var.instance_type
     key_name= var.key
     
-    data "aws_security_group" "demosg" {
-        id ="sg-06f293b32926c8afc"  
-    }
+
+
+    # Attaching security group to our instance
+    vpc_security_group_ids = ["${aws_security_group.demosg.id}"]
 
     # Attaching Tag to Instance 
     tags = {
