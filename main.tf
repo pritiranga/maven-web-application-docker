@@ -39,7 +39,7 @@ resource "aws_instance" "ec2" {
             "sudo newgrp docker",
             "sudo apt install docker.io",
             "docker --version",
-            "docker build -t webapp ."
+            "docker build -t webapp .",
             "sudo chmod 666 /var/run/docker.sock",
             # "docker pull pritidevops/webapp:latest .",
             # "docker run -itd -p 8080:8080 pritidevops/webapp:latest --name web-app"
