@@ -28,11 +28,11 @@ connection {
   provisioner "remote-exec" {
     inline = [
       "sudo apt update -y",
-      "sudo groupadd docker"
-      "sudo usermod -aG docker $USER"
-      "newgrp docker"
-      "sudo apt install docker.io -y"
-      "sudo chmod 666 /var/run/docker.sock",  
+      "sudo groupadd docker",
+      "sudo usermod -aG docker $USER",
+      "newgrp docker",
+      "sudo apt install docker.io -y",
+      "sudo chmod 666 /var/run/docker.sock"  
   ]
  }
 }
