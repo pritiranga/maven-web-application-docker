@@ -17,7 +17,7 @@ tools{
 
 stages{
 
-	stage ('SCM'){
+	stage ('SourceCM'){
 		steps{
 			script{
 				checkout scmGit(
