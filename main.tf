@@ -42,6 +42,7 @@ resource "aws_instance" "ec2" {
             # "sudo newgrp docker",
             # "sudo apt install docker.io",
             "docker --version"
+            "docker pull pritidevops/webapp:latest ."
             # "sudo chmod 666 /var/run/docker.sock"
         ]
     }
