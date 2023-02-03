@@ -28,12 +28,17 @@ resource "aws_instance" "ec2" {
 
     # SSH into instance 
     connection {
+        
         # The default username for our AMI
         user = "ubuntu"
+        
         # Private key for connection
         private_key = "${file(var.private_key)}"
+        
         # Type of connection
         type = "ssh"
+
+        host = self.public_ip
     }
 
     # Installing docker on newly created instance
