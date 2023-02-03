@@ -6,7 +6,6 @@ resource "aws_instance" "dev_terra" {
   tags = {
     Env = "dev"
   }
-}
 
 # Creating key pair
 # resource "aws_key_pair" "demokey" {
@@ -35,4 +34,4 @@ connection {
       "sudo chmod 666 /var/run/docker.sock"  
   ]
  }
-
+}
