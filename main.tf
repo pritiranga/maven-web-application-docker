@@ -1,37 +1,46 @@
-#creating ec2 instance 
-resource "aws_instance" "dev_terra" {
-  ami           = var.ami
-  instance_type = var.instance_type
-  key_name = var.key
-  tags = {
-    Env = "dev"
-  }
-
-# Creating key pair
-# resource "aws_key_pair" "demokey" {
-#   key_name   = "${var.key_name}"
-#   public_key = "${file(var.public_key)}"
-# }
-
-# SSH into instance 
-connection {
-  # The default username for our AMI
-  user = "ubuntu"
-  # Private key for connection
-  private_key = "${file(var.private_key)}"
-  # Type of connection
-  type = "ssh"
+# Configure and downloading plugins for aws
+provider "aws" {
+  #access_key = "${var.access_key}"
+  #secret_key = "${var.secret_key}"
+  region     = var.region
 }
 
-# Installing splunk & creating distributed indexer clustering on newly created instance
-  provisioner "remote-exec" {
-    inline = [
-      "sudo apt update -y",
-      "sudo groupadd docker",
-      "sudo usermod -aG docker $USER",
-      "newgrp docker",
-      "sudo apt install docker.io -y",
-      "sudo chmod 666 /var/run/docker.sock"  
+# Creating key pair
+resource "aws_key_pair" "demokey" {
+  key_name   = "${var.key}"
+  public_key = "${file(var.public_key)}"
+}
+
+# Creating Instances
+resource "aws_instance" "demoinstance1" {
+    ami = var.ami
+    instance_type = var.instance_type
+    count = 1
+    key_name = "${aws_key_pair.demokey.id}"   # SSH key that we have generated above for connection
+
+    # Attaching Tag to Instance 
+    tags = {
+        Name = "Demo-Instance"
+    }
+  
+    # SSH into instance 
+    connection {
+        
+        user = "ubuntu"   # The default username for our AMI
+        
+        private_key = "${file(var.private_key)}"   # Private key for connection
+        
+        type = "ssh"       # Type of connection
+  }
+  
+  # Installing docker on newly created instance
+    provisioner "remote-exec" {
+        inline = [
+            "sudo apt update -y",
+            "sudo groupadd docker",
+            "sudo usermod -aG docker $USER",
+            "sudo newgrp docker",
+            "sudo chmod 666 /var/run/docker.sock"
   ]
  }
 }
