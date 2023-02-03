@@ -4,6 +4,11 @@ variable "key" {
   description = "description"
 }
 
+# Defining Private Key
+variable "private_key" {
+  default = "keys/key.pem"
+}
+
 variable "region" {
     default = "us-east-1"
 }
