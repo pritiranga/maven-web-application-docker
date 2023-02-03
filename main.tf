@@ -1,5 +1,5 @@
 data "aws_security_group" "demosg" {
-    id ="sg-06f293b32926c8afc"  
+    id = sg-06f293b32926c8afc  
 }
 
 resource "aws_instance" "ec2" {
