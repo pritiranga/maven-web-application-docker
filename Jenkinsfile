@@ -84,6 +84,7 @@ stages{
 //                 	}
 //             	}
 //         }
-
+	}// stages closing
+} //pipeline closing
 	
   
