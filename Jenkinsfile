@@ -17,7 +17,7 @@ environment {
 
 stages{
 
-	stage ('Source Code Checkout'){
+	stage ('SCM'){
 		steps{
 			script{
 				checkout scmGit(
