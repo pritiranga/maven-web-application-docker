@@ -1,8 +1,3 @@
-# Configure and downloading plugins for aws
-provider "aws" {
-  region     = var.region
-}
-
 # Creating key pair
 resource "aws_key_pair" "demokey" {
   key_name   = "${var.key}"
