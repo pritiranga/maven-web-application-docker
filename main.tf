@@ -7,9 +7,6 @@ resource "aws_instance" "ec2" {
         id ="sg-06f293b32926c8afc"  
     }
 
-    # Attaching security group to our instance
-    vpc_security_group_ids = ["${aws_security_group.demosg.id}"]
-
     # Attaching Tag to Instance 
     tags = {
         Name = "Demo-terra-Instance"
