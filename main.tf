@@ -36,29 +36,49 @@ resource "aws_instance" "terra-staging" {
     Name = "Staging-Instance with Terraform"
   }
      
-    # SSH into instance 
-  connection {
-    type        = "ssh"
-    host        = self.public_ip
-    user        = "ubuntu"
-    private_key = "${file("~/.ssh/id_rsa")}"
-    timeout     = "60s"
-  }
+#     # SSH into instance 
+#   connection {
+#     type        = "ssh"
+#     host        = self.public_ip
+#     user        = "ubuntu"
+#     private_key = "${file("~/.ssh/id_rsa")}"
+#     timeout     = "60s"
+#   }
   
-  # Installing splunk & creating distributed indexer clustering on newly created instance
-  provisioner "remote-exec" {
-      inline = [
-        "sudo apt update -y",
-        "sudo groupadd docker",
-        "sudo usermod -aG docker $USER",
-        "sudo newgrp docker",
-        "sudo apt install docker.io",
-        "sudo chmod 666 /var/run/docker.sock",
-        "cd maven-project",
-        "docker build -t pritidevops/web-app .",
-        "docker run -itd -p 8080:8080 pritidevops/web-app --name webapp"
-  ]
- }
+#   # Installing splunk & creating distributed indexer clustering on newly created instance
+#   provisioner "remote-exec" {
+#       inline = [
+#         "sudo apt update -y",
+#         "sudo groupadd docker",
+#         "sudo usermod -aG docker $USER",
+#         "sudo newgrp docker",
+#         "sudo apt install docker.io",
+#         "sudo chmod 666 /var/run/docker.sock",
+#         "cd maven-project",
+#         "docker build -t pritidevops/web-app .",
+#         "docker run -itd -p 8080:8080 pritidevops/web-app --name webapp"
+#   ]
+#  }
+}
+
+resource “null_resource” “example” {
+
+provisioner “remote-exec” {
+
+connection {
+
+type = “ssh”
+
+user = "ubuntu"
+
+private_key = file("~/.ssh/id_rsa")
+
+host = aws_instance.terra-staging.public_ip
+
+file = file("~/.ssh/id_rsa")
+
+}
+}
 }
 
 
