@@ -118,12 +118,14 @@ resource "aws_instance" "terra-staging" {
         user = "ubuntu"
         
         # Private key for connection
-        private_key = file("keys/task-demo.pem")
+        private_key = file("C:/Users/Priti/Downloads/task-demo.pem")
         
         # Type of connection
         type = "ssh"
 
         host = self.public_ip
+
+        timeout = 2m
     }
   
     # Installing splunk & creating distributed indexer clustering on newly created instance
