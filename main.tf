@@ -70,6 +70,11 @@ resource "aws_security_group" "demosg" {
   }
 }
 
+# Creating key pair
+resource "aws_key_pair" "demokey" {
+  key_name   = "var.key"
+  public_key = "${file(var.public_key)}"
+}
 
 # Creating Instances
 resource "aws_instance" "terra-staging" {

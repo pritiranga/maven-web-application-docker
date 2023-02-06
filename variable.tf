@@ -1,17 +1,17 @@
 variable "key" {
   type        = string
-  default     = "task-demo"
+  default     = "taskterra"
   description = "description"
 }
 
 # Defining Private Key
 variable "private_key" {
-  default = "task-demo.pem"
+  default = "taskterra.pem"
 }
 
 # Defining Public Key
 variable "public_key" {
-  default = "task-demo.pub"
+  default = "taskterra.pub"
 }
 
 variable "region" {
