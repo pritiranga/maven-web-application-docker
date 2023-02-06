@@ -118,7 +118,7 @@ resource "aws_instance" "terra-staging" {
         user = "ubuntu"
         
         # Private key for connection
-        private_key = file("./keys/task-demo.pem")
+        private_key = file("keys/task-demo.pem")
         
         # Type of connection
         type = "ssh"
