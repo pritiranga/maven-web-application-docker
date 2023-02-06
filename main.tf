@@ -92,6 +92,8 @@ resource "aws_instance" "terra-staging" {
   # AMI based on region 
   ami = var.ami
 
+  tenancy = "host"
+
   # Launching instance into subnet 
   subnet_id = "${aws_subnet.demosubnet.id}"
 
