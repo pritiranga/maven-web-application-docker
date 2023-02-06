@@ -21,20 +21,15 @@ resource "aws_instance" "terra-staging" {
   ami = var.ami
   vpc_security_group_ids = ["sg-0426fcc5469e1658e"]
 
-  # Launching instance into subnet 
-  subnet_id = "${aws_subnet.demosubnet.id}"
 
   # Instance type 
   instance_type = var.instance_type
   
   # Count of instance
-#   count= 1
+   count= 1
   
   # SSH key that we have generated above for connection
   key_name = var.key
-
-  # Attaching security group to our instance
-  vpc_security_group_ids = ["${aws_security_group.demosg.id}"]
 
   # Attaching Tag to Instance 
   tags = {
