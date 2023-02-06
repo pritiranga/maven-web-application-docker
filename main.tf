@@ -113,19 +113,11 @@ resource "aws_instance" "terra-staging" {
   
     # SSH into instance 
     connection {
-        
-        # The default username for our AMI
-        user = "ubuntu"
-        
-        # Private key for connection
-        private_key = file("C:/Users/Priti/Downloads/task-demo.pem")
-        
-        # Type of connection
-        type = "ssh"
-
-        host = self.public_ip
-
-        timeout = 2m
+      type        = "ssh"
+      host        = self.public_ip
+      user        = "ubuntu"
+      private_key = file("C:/Users/Priti/Downloads/task-demo")
+      timeout     = "4m"
     }
   
     # Installing splunk & creating distributed indexer clustering on newly created instance
