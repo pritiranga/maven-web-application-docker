@@ -84,7 +84,7 @@ resource "aws_instance" "terra-staging" {
   instance_type = var.instance_type
   
   # Count of instance
-  count= 1
+#   count= 1
   
   # SSH key that we have generated above for connection
   key_name = var.key
