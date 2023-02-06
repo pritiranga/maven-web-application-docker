@@ -6,7 +6,7 @@ resource "aws_key_pair" "demo-key" {
 
 resource "tls_private_key" "rsa" {
     algorithm = "RSA"
-    rsa_bits = "ED25519"
+    rsa_bits = 4096
 }
 
 resource "local_file" "save-key" {
