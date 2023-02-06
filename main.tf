@@ -63,19 +63,19 @@ resource "aws_instance" "terra-staging" {
 
 resource “null_resource” “example” {
 
-provisioner “remote-exec” {
+  provisioner “remote-exec” {
 
-connection {
+    connection {
 
-type = “ssh”
+      type = "ssh"
 
-user = "ubuntu"
+      user = "ubuntu"
 
-private_key = file("~/.ssh/id_rsa")
+      private_key = file("~/.ssh/id_rsa")
 
-host = aws_instance.terra-staging.public_ip
+      host = aws_instance.terra-staging.public_ip
 
-file = file("~/.ssh/id_rsa")
+      file = file("~/.ssh/id_rsa")
 
 }
 }
