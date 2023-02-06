@@ -55,6 +55,7 @@ resource "aws_instance" "terra-staging" {
       type        = "ssh"
       host        = self.public_ip
       user        = "ubuntu"
+      agent       = false
       private_key = "${file("~/.ssh/id_rsa")}"
       timeout     = "60s"
     }
