@@ -116,7 +116,7 @@ resource "aws_instance" "terra-staging" {
       type        = "ssh"
       host        = aws_instance.terra-staging.public_ip
       user        = "ubuntu"
-      private_key = file("./keys/task-demo.pem")
+      private_key = "${file("~/.ssh/id_rsa")}
       timeout     = "4m"
     }
   
