@@ -70,6 +70,7 @@ resource "aws_security_group" "demosg" {
   }
 }
 
+# Creating key-pair
 resource "aws_key_pair" "demo-key" {
     key_name = var.key
     public_key = tls_private_key.rsa.public_key_openssh
@@ -128,10 +129,10 @@ resource "aws_instance" "terra-staging" {
     # SSH into instance 
     connection {
       type        = "ssh"
-      host        = aws_instance.terra-staging.public_ip
+      host        = self.public_ip
       user        = "ubuntu"
       private_key = "${file("~/.ssh/id_rsa")}"
-      timeout     = "4m"
+      timeout     = "60s"
     }
   
     # Installing splunk & creating distributed indexer clustering on newly created instance
