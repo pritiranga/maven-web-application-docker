@@ -62,7 +62,7 @@ resource "aws_instance" "terra-staging" {
     # Installing splunk & creating distributed indexer clustering on newly created instance
     provisioner "remote-exec" {
         inline = [
-            "sudo chmod 600 .ssh/id_rsa"
+            "sudo chmod 600 .ssh/id_rsa",
             "sudo apt update -y",
             "sudo groupadd docker",
             "sudo usermod -aG docker $USER",
