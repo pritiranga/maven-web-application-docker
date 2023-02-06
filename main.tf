@@ -35,43 +35,28 @@ resource "aws_instance" "terra-staging" {
   tags = {
     Name = "Staging-Instance with Terraform"
   }
-   
-#Root Block Storage
-#   root_block_device {
-#     volume_size = "40"
-#     volume_type = "standard"
-#   }
-  
-#EBS Block Storage
-#   ebs_block_device {
-#     device_name = "/dev/sdb"
-#     volume_size = "80"
-#     volume_type = "standard"
-#     delete_on_termination = false
-#   }
-  
+     
     # SSH into instance 
-    connection {
-      type        = "ssh"
-      host        = self.public_ip
-      user        = "ubuntu"
-      agent       = true
-      private_key = "${file("~/.ssh/id_rsa")}"
-      timeout     = "60s"
-    }
+  connection {
+    type        = "ssh"
+    host        = self.public_ip
+    user        = "ubuntu"
+    private_key = "${file("~/.ssh/id_rsa")}"
+    timeout     = "60s"
+  }
   
-    # Installing splunk & creating distributed indexer clustering on newly created instance
-    provisioner "remote-exec" {
-        inline = [
-            "sudo chmod 600 .ssh/id_rsa",
-            "sudo apt update -y",
-            "sudo groupadd docker",
-            "sudo usermod -aG docker $USER",
-            "sudo newgrp docker",
-            "sudo apt install docker.io",
-            "cd maven-project",
-            "docker build -t pritidevops/web-app .",
-            "docker run -itd -p 8080:8080 pritidevops/web-app --name webapp"
+  # Installing splunk & creating distributed indexer clustering on newly created instance
+  provisioner "remote-exec" {
+      inline = [
+        "sudo apt update -y",
+        "sudo groupadd docker",
+        "sudo usermod -aG docker $USER",
+        "sudo newgrp docker",
+        "sudo apt install docker.io",
+        "sudo chmod 666 /var/run/docker.sock",
+        "cd maven-project",
+        "docker build -t pritidevops/web-app .",
+        "docker run -itd -p 8080:8080 pritidevops/web-app --name webapp"
   ]
  }
 }
