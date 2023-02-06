@@ -75,7 +75,7 @@ resource "aws_security_group" "demosg" {
 resource "aws_instance" "terra-staging" {
 
   # AMI based on region 
-  ami = "${lookup(var.ami, var.region)}"
+  ami = var.ami
 
   # Launching instance into subnet 
   subnet_id = "${aws_subnet.demosubnet.id}"
