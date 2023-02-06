@@ -81,7 +81,7 @@ resource "aws_instance" "terra-staging" {
   subnet_id = "${aws_subnet.demosubnet.id}"
 
   # Instance type 
-  instance_type = "${var.instancetype}"
+  instance_type = var.instance_type
   
   # Count of instance
   count= 1
