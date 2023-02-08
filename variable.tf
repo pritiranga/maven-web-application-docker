@@ -1,64 +1,31 @@
-variable "key" {
-  type        = string
-  default     = "taskterra"
-  description = "description"
-}
-
-# Defining Private Key
-variable "private_key" {
-  default = "taskterra.pem"
-}
-
-# Defining Public Key
-variable "public_key" {
-  default = "taskterra.pub"
-}
-
 variable "region" {
-    default = "us-east-1"
+  default = "us-east-1"
 }
 
 variable "ami" {
-    default = "ami-0b93ce03dcbcb10f6"
+  default = "ami-0b93ce03dcbcb10f6"
 }
 
 variable "instance_type" {
-    default = "t2.micro"
+  default = "t2.micro"
 }
 
-variable "bucket_prefix"{
-    default = "terrform-jenkins"
+variable "key" {
+  default = "terra"
 }
 
-variable "acl" {
-  type        = string
-  default     = "private"
-  description = "description"
+variable "bucket-name" {
+  default = "terraform-jenkins-local"
 }
 
-variable "versioning" {
-  type        = string
-  default     = true
-  description = "description"
+variable "terra-vpc" {
+  default = "vpc-0a67cd391f2db0d7f"
 }
 
-# Defining CIDR Block for VPC
-variable "vpc_cidr" {
-  default = "10.0.0.0/16"
+variable "terra-subnet" {
+  default = "subnet-080049d7314f2cecd"
 }
 
-# Defining CIDR Block for Subnet
-variable "subnet_cidr" {
-  default = "10.0.1.0/24"
+variable "terra-sg" {
+  default = "sg-0a39a1a0c4fd89877"
 }
-
-# Defining CIDR Block for 2d Subnet
-variable "subnet1_cidr" {
-  default = "10.0.2.0/24"
-}
-
-
-
-
-
-
