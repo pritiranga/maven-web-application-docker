@@ -42,6 +42,12 @@ stages{
 //      		}
 //   	}
 	
+	stage('Dependency Checking'){
+		steps{
+			sh "dependencyCheck additionalArguments: '--format HTML', odcInstallation: 'Dependency-Checker'"
+		}
+	}
+	
 	stage('Build'){
   		steps{
   			sh  "mvn clean install package"
