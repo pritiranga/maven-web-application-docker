@@ -46,7 +46,7 @@ stages{
 		steps{
 			script{
 				
-				dependencyCheck additionalArguments: '--format HTML', odcInstallation: 'Dependency-Checker'
+				dependencyCheck additionalArguments: '--format XML', odcInstallation: 'Dependency-Checker'
 				dependencyCheckPublisher pattern: ''
 			}
 		}
