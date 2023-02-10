@@ -47,6 +47,7 @@ stages{
 			script{
 				
 				dependencyCheck additionalArguments: '--format HTML', odcInstallation: 'Dependency-Checker'
+				dependencyCheckPublisher pattern: ''
 			}
 		}
 	}
