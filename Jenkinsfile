@@ -44,7 +44,10 @@ stages{
 	
 	stage('Dependency Checking'){
 		steps{
-			dependencyCheck additionalArguments: '--format HTML', odcInstallation: 'Dependency-Checker'
+			script{
+				
+				dependencyCheck additionalArguments: '--format HTML', odcInstallation: 'Dependency-Checker'
+			}
 		}
 	}
 	
