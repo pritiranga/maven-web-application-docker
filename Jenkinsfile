@@ -9,10 +9,15 @@ agent any
 	
 	environment{
 		AWS_key = credentials("AWS-keys")
-        	AWS_ACCOUNT_ID= "var.aws_account_id"
-        	AWS_DEFAULT_REGION= "var.region"
-        	IMAGE_REPO_NAME= "var.image_repo_name"
-        	IMAGE_TAG= "var.image_tag"
+//         	AWS_ACCOUNT_ID= "var.aws_account_id"
+//         	AWS_DEFAULT_REGION= "var.region"
+//         	IMAGE_REPO_NAME= "var.image_repo_name"
+//         	IMAGE_TAG= "var.image_tag"
+         	AWS_ACCOUNT_ID= "109968515111"
+         	AWS_DEFAULT_REGION= "us-east-1"
+         	IMAGE_REPO_NAME= "demo-webapp-docker"
+         	IMAGE_TAG= "v1"
+		
     	}
 
 
