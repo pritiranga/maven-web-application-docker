@@ -1,5 +1,5 @@
 variable "ecr_name" {
-  default = "demo-repo"
+  default = "demo-web-repo"
 }
 
 
