@@ -48,12 +48,15 @@ stages{
 		}
 	}
 	
-	stage ('Building Docker Image'){
-		steps{
-			sh 'aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${aws_account_id}.dkr.ecr.${region}.amazonaws.com'
-			sh 'docker build -t $(repo_name) .'
-		}
-	}
+         stage('Logging into AWS ECR') {
+            steps {
+                script {
+                sh "aws ecr get-login-password --region ${var.region} | docker login --username AWS --password-stdin ${var.aws_account_id}.dkr.ecr.${var.region}.amazonaws.com"
+                }
+                 
+            }
+        }
+		
 }// stages closing
 } //pipeline closing
 	
