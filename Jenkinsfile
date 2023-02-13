@@ -17,7 +17,7 @@ tools{
 
 stages{
 
-	stage ('SourceCM'){
+	stage ('SCM'){
 		steps{
 			script{
 				checkout scmGit(
@@ -28,21 +28,22 @@ stages{
 	  	}
    	}
 	
-// 	stage('SonarQube analysis') {
+	stage('SonarQube analysis') {
 //     		environment {
 //       		SCANNER_HOME = tool 'SONAR'
 //     		}
-//     		steps {
+    		steps {
 //     			withSonarQubeEnv(credentialsId: 'Sonar-token', installationName: 'SONAR') {
 //          			sh '''$SCANNER_HOME/bin/sonar-scanner \
 //          			-Dsonar.projectKey=testing \
 //          			-Dsonar.projectName=testing \
 //          			-Dsonar.projectVersion=${BUILD_NUMBER}-${GIT_COMMIT_SHORT}'''
-//        			}
-//      		}
-//   	}
+			echo 'Sonarqube Report Generated'
+       			}
+     		}
+  	}
 	
-	stage('Dependency Checking'){
+	stage('Software Composition Anaylsis'){
 		steps{
 			script{
 				
