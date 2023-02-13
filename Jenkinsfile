@@ -47,12 +47,19 @@ agent any
 				sh 'terraform apply --auto-approve'
 			}
 		}
+		
+        	stage('Build Docker Image') {
+            		steps {
+                		sh 'docker build --force-rm -t "$IMAGE_REPO_NAME:latest" .'
+                		sh 'docker image ls'
+            		}
+        	}
 	
          	stage('Logging into AWS ECR') {
             		steps {
                 		script {
 					withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-        					echo 'Login Succedeed'
+        					sh 'docker push "$IMAGE_REPO_NAME:latest"'
     					}
                 		}  
             		}
