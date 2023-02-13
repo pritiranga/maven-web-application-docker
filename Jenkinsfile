@@ -28,6 +28,17 @@ stages{
 	  	}
    	}
 	
+	
+	stage('Software Composition Anaylsis'){
+		steps{
+			script{
+				
+				dependencyCheck additionalArguments: '--format XML', odcInstallation: 'Dependency-Checker'
+				dependencyCheckPublisher pattern: ''
+			}
+		}
+	}
+	
 	stage('SonarQube analysis') {
 //     		environment {
 //       		SCANNER_HOME = tool 'SONAR'
@@ -42,16 +53,6 @@ stages{
 			echo 'Sonarqube Report Generated'
      		}
   	}
-	
-	stage('Software Composition Anaylsis'){
-		steps{
-			script{
-				
-				dependencyCheck additionalArguments: '--format XML', odcInstallation: 'Dependency-Checker'
-				dependencyCheckPublisher pattern: ''
-			}
-		}
-	}
 	
 	stage('Build'){
   		steps{
