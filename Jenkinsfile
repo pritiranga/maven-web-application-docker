@@ -9,7 +9,7 @@ agent any
 	
 	environment{
 		AWS = credentials("aws")
-		AWS-Keys =credentials("AWS-keys")
+		AWS_Keys =credentials("AWS-keys")
          	AWS_ACCOUNT_ID= "var.aws_account_id"
          	AWS_DEFAULT_REGION= "var.region"
          	IMAGE_REPO_NAME= "var.image_repo_name"
