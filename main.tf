@@ -13,16 +13,7 @@ resource "aws_ecr_repository_policy" "demo-repo-policy" {
         "Sid": "adds full ecr access to the demo repository",
         "Effect": "Allow",
         "Principal": "*",
-        "Action": [
-          "ecr:BatchCheckLayerAvailability",
-          "ecr:BatchGetImage",
-          "ecr:CompleteLayerUpload",
-          "ecr:GetDownloadUrlForLayer",
-          "ecr:GetLifecyclePolicy",
-          "ecr:InitiateLayerUpload",
-          "ecr:PutImage",
-          "ecr:UploadLayerPart"
-        ]
+        "Action": "*"
       }
     ]
   }
