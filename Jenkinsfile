@@ -51,7 +51,7 @@ agent any
          	stage('Logging into AWS ECR') {
             		steps {
                 		script {
-					withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'AWS-keys', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+					withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
         					AWS("--region=us-east-1 s3 ls")
     					}
                 		}  
