@@ -51,8 +51,9 @@ agent any
          	stage('Logging into AWS ECR') {
             		steps {
                 		script {
-         
-					aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com
+					withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'AWS-keys', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+        					AWS("--region=us-east-1 s3 ls")
+    					}
                 		}  
             		}
         	}
