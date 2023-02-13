@@ -13,7 +13,9 @@ tools{
 //         NEXUS_REPOSITORY = "maven-demo-testing"
 //         NEXUS_CREDENTIAL_ID = "Nexus"
 // 	DOCKERHUB = credentials("Dockerhub")
+	
 // }
+	
 
 stages{
 
@@ -56,7 +58,8 @@ stages{
 	
 	stage('Build'){
   		steps{
-  			sh  "mvn clean install package"
+  			sh  "docker build -t webapp-demo ."
+			sh "docker tag webapp-demo:latest "
   		}
   	}
   
@@ -96,6 +99,9 @@ stages{
 //                 	}
 //             	}
 //         }
+	
+	
+	
 	}// stages closing
 } //pipeline closing
 	
