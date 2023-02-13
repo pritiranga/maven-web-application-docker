@@ -38,8 +38,8 @@ stages{
 //          			-Dsonar.projectKey=testing \
 //          			-Dsonar.projectName=testing \
 //          			-Dsonar.projectVersion=${BUILD_NUMBER}-${GIT_COMMIT_SHORT}'''
+//			}
 			echo 'Sonarqube Report Generated'
-       			}
      		}
   	}
 	
