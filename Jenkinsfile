@@ -8,7 +8,7 @@ agent any
 	}
 	
 	environment{
-		AWS = credentials("aws")
+		AWS =credentials("aws")
 		AWS_Keys =credentials("AWS-keys")
          	AWS_ACCOUNT_ID= "var.aws_account_id"
          	AWS_DEFAULT_REGION= "var.region"
@@ -59,7 +59,7 @@ agent any
          	stage('Logging into AWS ECR') {
             		steps {
                 		script {
-					withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'AWS', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+					withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'AWS-keys', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
         					sh 'docker push "$IMAGE_REPO_NAME:latest"'
     					}
                 		}  
