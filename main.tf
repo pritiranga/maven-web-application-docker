@@ -1,5 +1,5 @@
 resource "aws_ecr_repository" "demo_repository" {
-  name                 = var.ecr_name
+  name                 = "demo-webapp-docker"
   image_tag_mutability = "IMMUTABLE"
 }
 
