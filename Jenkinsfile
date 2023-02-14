@@ -9,7 +9,7 @@ agent any
 	
 	environment{
 		AWS_KEYS = credentials( "AWS")
-		ECR_REG = 'https://109968515111.dkr.ecr.us-east-1.amazonaws.com'
+		ECR_REG = '109968515111.dkr.ecr.us-east-1.amazonaws.com'
     	}
 
 
