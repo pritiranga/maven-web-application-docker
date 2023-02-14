@@ -1,8 +1,8 @@
 # Use an official Maven image as the base image
 FROM maven:3.6.3-jdk-8
 
-RUN adduser --system --group --no-create-home docker
-USER docker
+# RUN adduser --system --group --no-create-home docker
+# USER docker
 HEALTHCHECK NONE
 
 # Set the working directory to /app
@@ -12,7 +12,7 @@ WORKDIR /app
 COPY pom.xml .
 
 # Download the dependencies
-RUN mvn dependency:go-offline
+#RUN mvn dependency:go-offline
 
 # Copy the rest of the project files to the container
 COPY . .
