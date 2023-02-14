@@ -9,7 +9,7 @@ agent any
 	
 	environment{
 		AWS_KEYS = credentials( "AWS")
-		
+		ECR_REG = 'https://109968515111.dkr.ecr.us-east-1.amazonaws.com'
     	}
 
 
@@ -51,24 +51,14 @@ agent any
                 		sh 'docker image ls'
             		}
         	}
-	
 		
-		stage('Deploy') {
-            		steps {
-                		script{
-					 withDockerRegistry([ credentialsId: "aws", url: "https://109968515111.dkr.ecr.us-east-1.amazonaws.com" ]){
-                    				sh 'docker push demo-webapp-docker'
-					}	
-                    		}
-                	}
-            	}
+		stage('Push Docker Image to ECR'){
+			steps{
+				sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $(ECR_REG)'
+				sh 'docker push demo-webapp-docker'
+			}
+		}
 		
-// 		stage('Push'){
-// 			steps{
-// 				sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 109968515111.dkr.ecr.us-east-1.amazonaws.com'
-				
-// 			}
-// 		}
 	}// stages closing
 } //pipeline closing
 	
