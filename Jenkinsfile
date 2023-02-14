@@ -82,6 +82,7 @@ agent any
 		stage ('Docker Image Scanning'){
 			steps{
 				sh 'trivy image --format json -o trivy_scan_report.json $ECR_REGISTRY/demo-webapp-docker:$BUILD_NUMBER'
+				echo 'trivy_scan_report.json generated'
 			}
 		}
 		
