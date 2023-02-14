@@ -48,12 +48,7 @@ agent any
 //       			}
     		}
 		
-		stage ('Docker File Scan') {
-			steps{
-				sh 'docker scan Dockerfile'
-			}
-		}
-				
+						
 		stage ('Creating ECR'){
 			steps{
 				sh 'terraform init'
@@ -62,6 +57,12 @@ agent any
 			}
 		}
 		
+		stage ('Docker File Scan') {
+			steps{
+				sh 'pip3 install checkov'
+				sh 'checkov -f Dockerfile'
+			}
+		}
 		
         	stage('Build Docker Image') {
             		steps {
