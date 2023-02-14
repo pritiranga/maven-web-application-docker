@@ -67,7 +67,7 @@ agent any
                 		script{
                         		docker.withRegistry('https://109968515111.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:AWS') {
                     				sh 'docker push demo-webapp-docker'
-                    				
+					}	
                     		}
                 	}
             	}
