@@ -47,7 +47,7 @@ agent any
 		
         	stage('Build Docker Image') {
             		steps {
-                		sh 'docker build --force-rm -t $(var.image_repo_name) .'
+                		sh 'docker build -t demo-webapp-docker .'
                 		sh 'docker image ls'
             		}
         	}
