@@ -27,16 +27,23 @@ agent any
    		}
 	
 	
-// 		stage('Software Composition Anaylsis'){
-// 			steps{
+		stage('Software Composition Anaylsis'){
+			steps{
 // 				script{	
 // 					dependencyCheck additionalArguments: '--format XML', odcInstallation: 'Dependency-Checker'
 // 					dependencyCheckPublisher pattern: ''
 // 				}
-// 			}
-// 		}
-	
-
+				echo 'SCA Working'
+			}
+		}
+		
+		stage ('Unit Testing') {
+			steps{
+				//sh 'junit allowEmptyResults: true, skipMarkingBuildUnstable: true, testResults: '*/target/test-reports/*.xml'
+				sh 'mvn test'
+			}
+		}
+				
 		stage ('Creating ECR'){
 			steps{
 				sh 'terraform init'
@@ -44,6 +51,10 @@ agent any
 				sh 'terraform apply --auto-approve'
 			}
 		}
+		
+		stage ('Docker File Scan'){
+			steps{
+				sh '
 		
         	stage('Build Docker Image') {
             		steps {
