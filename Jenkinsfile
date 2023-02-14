@@ -60,8 +60,9 @@ agent any
 		stage ('Docker File Scan') {
 			steps{
 				//sh 'pip3 install checkov'
-				sh 'checkov -f main.tf -f Dockerfile'
 				sh 'checkov --skip-check LOW MEDIUM'
+				sh 'checkov -f main.tf -f Dockerfile'
+				
 			}
 		}
 		
