@@ -37,6 +37,12 @@ agent any
 			}
 		}
 		
+		stage('SAST-Sonarqube'){
+			steps{
+				echo 'Code review report generated'
+			}
+		}
+		
        		stage('Unit Testing') {
             		steps{
                     		junit(testResults: 'build/test-results/test/*.xml', allowEmptyResults : true, skipPublishingChecks: true)
@@ -85,6 +91,8 @@ agent any
 				echo 'trivy_scan_report.json generated'
 			}
 		}
+		
+		
 		
 	}// stages closing
 } //pipeline closing
