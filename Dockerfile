@@ -1,7 +1,7 @@
 # Use an official Maven image as the base image
 FROM maven:3.6.3-jdk-8
 
-RUN groupadd -r docker && useradd -r -g user docker
+RUN groupadd -r docker && useradd -r -g docker docker
 USER docker
 HEALTHCHECK NONE
 
