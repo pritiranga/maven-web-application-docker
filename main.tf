@@ -18,7 +18,7 @@ resource "aws_ecr_repository_policy" "demo-repo-policy" {
       {
         "Sid": "adds full ecr access to the demo repository",
         "Effect": "Allow",
-        "Principal": "arn:aws:ecr:*:109968515111:repository/*",
+        "Principal": "*",
         "Action": "*"
       }
     ]
