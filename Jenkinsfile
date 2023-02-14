@@ -82,7 +82,7 @@ agent any
 		
 		stage ('Docker Image Scanning'){
 			steps{
-				sh 'trivy image $ECR_REGISTRY/demo-webapp-docker:latest -o report.html'
+				sh 'trivy image --format html -o trivy_scan_report.html $ECR_REGISTRY/demo-webapp-docker:latest'
 			}
 		}
 		
