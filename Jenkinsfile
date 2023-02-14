@@ -60,7 +60,7 @@ agent any
 		stage ('Docker File Scan') {
 			steps{
 				//sh 'pip3 install checkov' checkov --skip-check LOW MEDIUM'
-				sh 'checkov --skip-check MEDIUM --bc-api-key 5c2c388c-4ebe-4683-a728-d09e3f208c4c -f main.tf -f Dockerfile'
+				sh 'checkov -f Dockerfile'
 				
 			}
 		}
