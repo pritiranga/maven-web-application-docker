@@ -65,7 +65,7 @@ agent any
 		stage('Deploy') {
             		steps {
                 		script{
-                        		docker.withRegistry('https://109968515111.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:AWS') {
+                        		docker.withRegistry('https://109968515111.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:aws') {
                     				sh 'docker push demo-webapp-docker'
 					}	
                     		}
