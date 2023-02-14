@@ -52,15 +52,15 @@ agent any
             		}
         	}
 	
-//          	stage('Logging into AWS ECR') {
-//             		steps {
-//                 		script {
-// 					withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-//         					sh 'docker push demo-webapp-docker:latest'
-//     					}
-//                 		}  
-//             		}
-//         	}
+         	stage('Logging into AWS ECR') {
+            		steps {
+                		script {
+					withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+        					sh 'docker push demo-webapp-docker:latest'
+    					}
+                		}  
+            		}
+        	}
 		
 // 		stage('Deploy') {
 //             		steps {
@@ -72,11 +72,12 @@ agent any
 //                 	}
 //             	}
 		
-		stage('Push'){
-			steps{
-				sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 109968515111.dkr.ecr.us-east-1.amazonaws.com'
-			}
-		}
+// 		stage('Push'){
+// 			steps{
+// 				sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 109968515111.dkr.ecr.us-east-1.amazonaws.com'
+				
+// 			}
+// 		}
 	}// stages closing
 } //pipeline closing
 	
