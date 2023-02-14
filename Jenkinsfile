@@ -62,16 +62,21 @@ agent any
 //             		}
 //         	}
 		
-		stage('Deploy') {
-            		steps {
-                		script{
-                        		docker.withRegistry('https://109968515111.dkr.ecr.us-east-1.amazonaws.com', 'aws') {
-                    				sh 'docker push demo-webapp-docker'
-					}	
-                    		}
-                	}
-            	}
+// 		stage('Deploy') {
+//             		steps {
+//                 		script{
+//                         		docker.withRegistry('https://109968515111.dkr.ecr.us-east-1.amazonaws.com', 'aws') {
+//                     				sh 'docker push demo-webapp-docker'
+// 					}	
+//                     		}
+//                 	}
+//             	}
 		
+		stage('Push'){
+			steps{
+				sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 109968515111.dkr.ecr.us-east-1.amazonaws.com'
+			}
+		}
 	}// stages closing
 } //pipeline closing
 	
