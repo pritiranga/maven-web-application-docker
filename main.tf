@@ -1,5 +1,11 @@
 resource "aws_ecr_repository" "demo_repository" {
   name                 = "demo-webapp-docker"
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+  encryption_configuration {
+    encryption_type = "KMS"
+  }
   image_tag_mutability = "IMMUTABLE"
 }
 
@@ -12,7 +18,7 @@ resource "aws_ecr_repository_policy" "demo-repo-policy" {
       {
         "Sid": "adds full ecr access to the demo repository",
         "Effect": "Allow",
-        "Principal": "*",
+        "Principal": "arn:aws:ecr:*:109968515111:repository/*",
         "Action": "*"
       }
     ]
