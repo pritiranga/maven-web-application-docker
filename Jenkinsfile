@@ -48,15 +48,6 @@ agent any
 //       			}
     		}
 		
-						
-		stage ('Creating ECR'){
-			steps{
-				sh 'terraform init'
-				sh 'terraform plan'
-				sh 'terraform apply --auto-approve'
-			}
-		}
-		
 		stage ('Docker File Scan') {
 			steps{
 				//sh 'pip3 install checkov' checkov --skip-check LOW MEDIUM'
@@ -71,6 +62,14 @@ agent any
                 		sh 'docker image ls'
             		}
         	}
+		
+		stage ('Creating ECR'){
+			steps {
+				sh 'terraform init'
+				sh 'terraform plan'
+				sh 'terraform apply --auto-approve'
+			}
+		}
 		
 		stage('Publish Docker Image to ECR'){
 			steps{
