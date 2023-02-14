@@ -1,6 +1,7 @@
 # Use an official Maven image as the base image
 FROM maven:3.6.3-jdk-8
 
+RUN useradd -u 8877 ubuntu
 USER ubuntu
 
 HEALTHCHECK NONE
