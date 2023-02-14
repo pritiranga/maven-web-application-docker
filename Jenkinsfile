@@ -75,8 +75,8 @@ agent any
 		stage('Publish Docker Image to ECR'){
 			steps{
 				sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin "$ECR_REGISTRY"'
-				sh 'docker tag demo-webapp-docker:latest $ECR_REGISTRY/demo-webapp-docker:latest'
-				sh 'docker push $ECR_REGISTRY/demo-webapp-docker:latest'
+				sh 'docker tag demo-webapp-docker:latest $ECR_REGISTRY/demo-webapp-docker:$BUILD_NUMBER'
+				sh 'docker push $ECR_REGISTRY/demo-webapp-docker:$BUILD_NUMBER'
 			}
 		}
 		
