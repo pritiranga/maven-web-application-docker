@@ -43,6 +43,12 @@ agent any
 				sh 'mvn test'
 			}
 		}
+		
+		stage ('Docker File Scan') {
+			steps{
+				echo 'scanning'
+			}
+		}
 				
 		stage ('Creating ECR'){
 			steps{
@@ -52,9 +58,6 @@ agent any
 			}
 		}
 		
-		stage ('Docker File Scan'){
-			steps{
-				sh '
 		
         	stage('Build Docker Image') {
             		steps {
