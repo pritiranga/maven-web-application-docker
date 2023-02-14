@@ -52,25 +52,25 @@ agent any
             		}
         	}
 	
-//          	stage('Logging into AWS ECR') {
-//             		steps {
-//                 		script {
-// 					withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-//         					sh 'docker push "$(var.image_repo_name):latest"'
-//     					}
-//                 		}  
-//             		}
-//         	}
-		
-		stage('Deploy') {
+         	stage('Logging into AWS ECR') {
             		steps {
-                		script{
-                        		docker.withRegistry('https://109968515111.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:aws') {
-                    				sh 'docker push demo-webapp-docker'
-					}	
-                    		}
-                	}
-            	}
+                		script {
+					withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+        					sh 'docker push demo-webapp-docker:latest'
+    					}
+                		}  
+            		}
+        	}
+		
+// 		stage('Deploy') {
+//             		steps {
+//                 		script{
+//                         		docker.withRegistry('https://109968515111.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:aws') {
+//                     				sh 'docker push demo-webapp-docker'
+// 					}	
+//                     		}
+//                 	}
+//             	}
 		
 	}// stages closing
 } //pipeline closing
