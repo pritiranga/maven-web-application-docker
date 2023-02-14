@@ -9,8 +9,6 @@ agent any
 	
 	environment{
 		AWS_KEYS = credentials( "aws")
-		IMAGE_REPO_NAME = var.image_repo_name
-		IMAGE_TAG = var.image_tag
 		
     	}
 
@@ -49,7 +47,7 @@ agent any
 		
         	stage('Build Docker Image') {
             		steps {
-                		sh 'docker build --force-rm -t "$(IMAGE_REPO_NAME):latest" .'
+                		sh 'docker build --force-rm -t "$(var.image_repo_name):latest" .'
                 		sh 'docker image ls'
             		}
         	}
@@ -58,7 +56,7 @@ agent any
             		steps {
                 		script {
 					withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'AWS-keys', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-        					sh 'docker push "$(IMAGE_REPO_NAME):latest"'
+        					sh 'docker push "$(var.image_repo_name):latest"'
     					}
                 		}  
             		}
