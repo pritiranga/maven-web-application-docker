@@ -56,7 +56,7 @@ agent any
 		stage('Deploy') {
             		steps {
                 		script{
-					 withDockerRegistry([docker login --username AWS --password-stdin 109968515111.dkr.ecr.us-east-1.amazonaws.com ]){
+					 withDockerRegistry([ credentialsId: "aws", url: "https://109968515111.dkr.ecr.us-east-1.amazonaws.com" ]){
                     				sh 'docker push demo-webapp-docker'
 					}	
                     		}
