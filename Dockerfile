@@ -1,11 +1,6 @@
 # Use an official Maven image as the base image
 FROM maven:3.6.3-jdk-8
 
-RUN useradd -ms /bin/bash priti
-RUN echo 'priti:123' | chpasswd
-RUN usermod priti $USER
-USER priti
-
 HEALTHCHECK NONE
 
 # Set the working directory to /app
