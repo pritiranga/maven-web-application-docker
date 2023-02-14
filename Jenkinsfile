@@ -60,7 +60,7 @@ agent any
 		stage ('Docker File Scan') {
 			steps{
 				sh 'pip3 install checkov'
-				sh 'checkov -f Dockerfile'
+				sh 'checkov -f main.tf'
 			}
 		}
 		
