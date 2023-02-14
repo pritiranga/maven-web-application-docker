@@ -9,7 +9,7 @@ agent any
 	
 	environment{
 		AWS_KEYS = credentials( "AWS")
-		
+		ECR_REGISTRY = '109968515111.dkr.ecr.us-east-1.amazonaws.com'
     	}
 
 
@@ -54,9 +54,10 @@ agent any
 		
 		stage('Push Docker Image to ECR'){
 			steps{
-				sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 109968515111.dkr.ecr.us-east-1.amazonaws.com'
-				sh 'docker push demo-webapp-docker'
-			}
+				sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin "$(ECR_REGISTRY)"'
+				sh 'docker tag demo-webapp-docker:latest $(ECR_REGISTRY)/demo-webapp-docker:latest'
+				sh 'docker push $(ECR_REGISTRY)/demo-webapp-docker:latest'
+)			}
 		}
 		
 	}// stages closing
