@@ -37,16 +37,20 @@ agent any
 			}
 		}
 		
-		stage ('Unit Testing') {
-			steps{
-				//sh 'junit allowEmptyResults: true, skipMarkingBuildUnstable: true, testResults: '*/target/test-reports/*.xml'
-				sh 'mvn test'
-			}
-		}
+       		stage('Unit Testing') {
+            		steps{
+                    		junit(testResults: 'build/test-results/test/*.xml', allowEmptyResults : true, skipPublishingChecks: true)
+           		}
+            		post {
+                		success {
+                    			publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'build/reports/tests/test/', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+        			}
+      			}
+    		}
 		
 		stage ('Docker File Scan') {
 			steps{
-				echo 'scanning'
+				sh 'docker scan Dockerfile'
 			}
 		}
 				
