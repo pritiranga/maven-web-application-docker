@@ -1,7 +1,8 @@
 # Use an official Maven image as the base image
 FROM maven:3.6.3-jdk-8
 
-USER docker:docker
+RUN adduser --system --group --no-create-home docker
+USER docker
 HEALTHCHECK NONE
 
 # Set the working directory to /app
