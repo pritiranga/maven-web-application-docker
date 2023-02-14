@@ -3,7 +3,7 @@ FROM maven:3.6.3-jdk-8
 
 RUN useradd -ms /bin/bash priti
 RUN echo 'priti:123' | chpasswd
-RUN usermod -a -g priti
+RUN usermod -aG priti $USER
 USER priti
 
 HEALTHCHECK NONE
