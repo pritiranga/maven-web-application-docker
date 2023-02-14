@@ -8,7 +8,7 @@ agent any
 	}
 	
 	environment{
-		AWS_KEYS = credentials( "aws")
+		AWS_KEYS = credentials( "AWS")
 		
     	}
 
