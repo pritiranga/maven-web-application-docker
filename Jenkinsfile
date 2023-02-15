@@ -92,6 +92,12 @@ agent any
 			}
 		}
 		
+		stage ('Deploying on K8s cluster'){
+			steps{
+				echo 'deploying'
+			}
+		}
+		
 		
 		
 	}// stages closing
