@@ -94,11 +94,15 @@ agent any
 		
 		stage ('Deploying on K8s cluster'){
 			steps{
-				echo 'Deployment started with Docker image'
-				sh 'kubectl apply -f deployment-service.yml'
-				sh 'sleep 10'
-				sh 'Displaying all service details'
-				sh 'kubectl get all'
+				script{
+					withKubeConfig([credentialsId: 'k8', serverUrl: 'http://54.235.229.32/']){
+						echo 'Deployment started with Docker image'
+						sh 'kubectl apply -f deployment-service.yml'
+						sh 'sleep 10'
+						sh 'Displaying all service details'
+						sh 'kubectl get all'			
+					}
+				}
 			}
 		}
 		
