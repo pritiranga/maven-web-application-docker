@@ -110,7 +110,7 @@ agent any
 			steps{
 				script{
 					kubernetesDeploy(
-						configs: 'deployment-service.yml'
+						configs: 'deployment-service.yml',
 						kubeconfigId: 'k8'
 						)
 				}
