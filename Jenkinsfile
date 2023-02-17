@@ -62,39 +62,43 @@ agent any
 			}
 		}
 		
-        	stage('Build Docker Image') {
-            		steps {
-                		sh 'docker build -t demo-webapp-docker .'
-                		sh 'docker image ls'
-            		}
-        	}
+//         	stage('Build Docker Image') {
+//             		steps {
+//                 		sh 'docker build -t demo-webapp-docker .'
+//                 		sh 'docker image ls'
+//             		}
+//         	}
 		
-		stage ('Creating ECR'){
-			steps {
-				sh 'terraform init'
-				sh 'terraform plan'
-				sh 'terraform apply --auto-approve'
-			}
-		}
+// 		stage ('Creating ECR'){
+// 			steps {
+// 				sh 'terraform init'
+// 				sh 'terraform plan'
+// 				sh 'terraform apply --auto-approve'
+// 			}
+// 		}
 		
-		stage('Publish Docker Image to ECR'){
-			steps{
-				sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin "$ECR_REGISTRY"'
-				sh 'docker tag demo-webapp-docker:latest $ECR_REGISTRY/demo-webapp-docker:$BUILD_NUMBER'
-				sh 'docker push $ECR_REGISTRY/demo-webapp-docker:$BUILD_NUMBER'
-			}
-		}
+// 		stage('Publish Docker Image to ECR'){
+// 			steps{
+// 				sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin "$ECR_REGISTRY"'
+// 				sh 'docker tag demo-webapp-docker:latest $ECR_REGISTRY/demo-webapp-docker:$BUILD_NUMBER'
+// 				sh 'docker push $ECR_REGISTRY/demo-webapp-docker:$BUILD_NUMBER'
+// 			}
+// 		}
 		
-		stage ('Docker Image Scanning'){
-			steps{
-				sh 'trivy image --format json -o trivy_scan_report.json $ECR_REGISTRY/demo-webapp-docker:$BUILD_NUMBER'
-				echo 'trivy_scan_report.json generated'
-			}
-		}
+// 		stage ('Docker Image Scanning'){
+// 			steps{
+// 				sh 'trivy image --format json -o trivy_scan_report.json $ECR_REGISTRY/demo-webapp-docker:$BUILD_NUMBER'
+// 				echo 'trivy_scan_report.json generated'
+// 			}
+// 		}
 		
 		stage ('Deploying on K8s cluster'){
 			steps{
-				echo 'deploying'
+				echo 'Deployment started with Docker image'
+				sh 'kubectl apply -f deployment-service.yml'
+				sh 'sleep 10'
+				sh 'Displaying all service details'
+				sh 'kubectl get all'
 			}
 		}
 		
