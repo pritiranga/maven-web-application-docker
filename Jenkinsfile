@@ -40,7 +40,7 @@ agent any
                     			serverId: "JFrog",
                     			repo: "devsecops-test",
                     			excludePatterns: ["*.jar"],
-//                 		)
+                 		)
 // 				rtGradleResolver (
 //                     			id: "GRADLE_RESOLVER",
 //                     			serverId: "JFrog",
