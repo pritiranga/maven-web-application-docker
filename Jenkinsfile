@@ -44,7 +44,7 @@ agent any
 				rtGradleResolver (
                     			id: "GRADLE_RESOLVER",
                     			serverId: "JFrog",
-                    			repo: devsecops-test
+                    			repo: "devsecops-test"
                 		)
 
             		}
