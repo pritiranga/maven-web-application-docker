@@ -38,14 +38,14 @@ agent any
                 		rtGradleDeployer (
                     			id: "GRADLE_DEPLOYER",
                     			serverId: "JFrog",
-                    			repo: devsecops-test,
+                    			repo: "devsecops-test",
                     			excludePatterns: ["*.jar"],
-                		)
-				rtGradleResolver (
-                    			id: "GRADLE_RESOLVER",
-                    			serverId: "JFrog",
-                    			repo: devsecops-test
-                		)
+//                 		)
+// 				rtGradleResolver (
+//                     			id: "GRADLE_RESOLVER",
+//                     			serverId: "JFrog",
+//                     			repo: devsecops-test
+//                 		)
 
             		}
         	}
