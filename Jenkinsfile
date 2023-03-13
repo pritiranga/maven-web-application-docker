@@ -66,19 +66,19 @@ agent any
             		}
         	}
         	
-		stage ('Exec Gradle') {
-            		steps {
-                		rtGradleRun (
-                    			usesPlugin: true, // Artifactory plugin already defined in build script
-                    			useWrapper: true,
-                    			tool: 'Gradle', // Tool name from Jenkins configuration
+// 		stage ('Exec Gradle') {
+//             		steps {
+//                 		rtGradleRun (
+//                     			usesPlugin: true, // Artifactory plugin already defined in build script
+//                     			useWrapper: true,
+//                     			tool: 'Gradle', // Tool name from Jenkins configuration
                     			
-                    			tasks: 'clean artifactoryPublish',
-                    			deployerId: "GRADLE_DEPLOYER",
-                    			resolverId: "GRADLE_RESOLVER"
-                		)
-            		}
-        	}
+//                     			tasks: 'clean artifactoryPublish',
+//                     			deployerId: "GRADLE_DEPLOYER",
+//                     			resolverId: "GRADLE_RESOLVER"
+//                 		)
+//             		}
+//         	}
 
 
         	stage ('Publish build info') {
