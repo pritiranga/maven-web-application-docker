@@ -41,11 +41,11 @@ agent any
                     			repo: "devsecops-test",
                     			excludePatterns: ["*.jar"],
                  		)
-// 				rtGradleResolver (
-//                     			id: "GRADLE_RESOLVER",
-//                     			serverId: "JFrog",
-//                     			repo: devsecops-test
-//                 		)
+				rtGradleResolver (
+                    			id: "GRADLE_RESOLVER",
+                    			serverId: "JFrog",
+                    			repo: devsecops-test
+                		)
 
             		}
         	}
