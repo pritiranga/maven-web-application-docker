@@ -71,8 +71,8 @@ agent any
                 		rtGradleRun (
                     			usesPlugin: true, // Artifactory plugin already defined in build script
                     			useWrapper: true,
-                    			tool: Gradle, // Tool name from Jenkins configuration
-                    			//rootDir: "gradle-examples/gradle-example/",
+                    			tool: 'Gradle', // Tool name from Jenkins configuration
+                    			rootDir: "maven-web-application-docker",
                     			tasks: 'clean artifactoryPublish',
                     			deployerId: "GRADLE_DEPLOYER",
                     			resolverId: "GRADLE_RESOLVER"
