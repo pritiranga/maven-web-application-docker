@@ -38,7 +38,7 @@ agent any
                 		rtGradleDeployer (
                     			id: "GRADLE_DEPLOYER",
                     			serverId: "JFrog",
-                    			repo: ARTIFACTORY_LOCAL_SNAPSHOT_REPO,
+                    			repo: devsecops-test,
                     			excludePatterns: ["*.jar"],
                 		)
 				rtGradleResolver (
