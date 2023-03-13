@@ -41,6 +41,11 @@ agent any
                     			repo: ARTIFACTORY_LOCAL_SNAPSHOT_REPO,
                     			excludePatterns: ["*.jar"],
                 		)
+				rtGradleResolver (
+                    			id: "GRADLE_RESOLVER",
+                    			serverId: "JFrog",
+                    			repo: devsecops-test
+                		)
 
             		}
         	}
