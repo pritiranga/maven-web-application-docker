@@ -55,7 +55,31 @@ agent any
 				sh 'gradle build --no-daemon'
 			}
 		}
+		
+		stage ('Config Build Info') {
+            		steps {
+                		rtBuildInfo (
+                    			captureEnv: true,
+                    			includeEnvPatterns: ["*"],
+                    			excludeEnvPatterns: ["DONT_COLLECT*"]
+                		)
+            		}
+        	}
         	
+		stage ('Exec Gradle') {
+            		steps {
+                		rtGradleRun (
+                    			usesPlugin: true, // Artifactory plugin already defined in build script
+                    			useWrapper: true,
+                    			tool: Gradle, // Tool name from Jenkins configuration
+                    			//rootDir: "gradle-examples/gradle-example/",
+                    			tasks: 'clean artifactoryPublish',
+                    			deployerId: "GRADLE_DEPLOYER",
+                    			resolverId: "GRADLE_RESOLVER"
+                		)
+            		}
+        	}
+
 
         	stage ('Publish build info') {
             		steps {
