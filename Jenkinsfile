@@ -52,7 +52,7 @@ agent any
 		
 		stage ('build') {
 			steps{
-				sh 'gradle clean build --no-daemon'
+				sh 'gradle build --no-daemon'
 			}
 		}
         	
