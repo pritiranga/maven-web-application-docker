@@ -52,7 +52,7 @@ agent any
 		
 		stage ('build') {
 			steps{
-				sh 'gradle build --no-daemon'
+				sh 'gradle build artifactoryPublish --no-daemon'
 			}
 		}
 		
