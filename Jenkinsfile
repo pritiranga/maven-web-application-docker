@@ -26,6 +26,39 @@ agent any
 	  		}
    		}
 	
+		
+		stage ('Artifactory configuration') {
+            		steps {
+                		rtServer (
+                    			id: "JFrog",
+                    			url: "http://3.92.84.72:8081",
+                    			credentialsId: "jfrog"
+                		)
+
+                		rtGradleDeployer (
+                    			id: "GRADLE_DEPLOYER",
+                    			serverId: "JFrog",
+                    			repo: ARTIFACTORY_LOCAL_SNAPSHOT_REPO,
+                    			excludePatterns: ["*.jar"],
+                		)
+
+            		}
+        	}
+		
+		stage ('build') {
+			steps{
+				sh 'gradle clean build --no-daemon'
+			}
+		}
+        	
+
+        	stage ('Publish build info') {
+            		steps {
+                		rtPublishBuildInfo (
+                    		serverId: "JFrog"
+                		)
+            		}
+        	}
 	
 		stage('Software Composition Anaylsis'){
 			steps{
