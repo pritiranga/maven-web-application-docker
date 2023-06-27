@@ -5,7 +5,7 @@ COPY pom.xml .
 RUN mvn dependency:go-offline
 
 COPY src ./src
-RUN mvn package -DskipTests
+RUN mvn clean install
 
 # Stage 2: Final stage
 FROM tomcat:8.0.20-jre8
