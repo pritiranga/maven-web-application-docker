@@ -17,7 +17,7 @@ spec:
         - name: webapptask
           image: pritidevops/k8_app:latest
           ports:
-            - containerPort: 8020
+            - containerPort: 9000
 
 
 ---
@@ -32,7 +32,7 @@ spec:
   selector:
     app: web
   ports:
-    - port: 8020
-      targetPort: 8020
-      nodePort: 32004
+    - port: 9000
+      targetPort: 9000
+      nodePort: 32000
   
