@@ -2,6 +2,7 @@
 FROM maven:3.8.3-openjdk-8-slim AS build
 WORKDIR /app
 COPY pom.xml .
+COPY . .
 RUN mvn dependency:go-offline
 
 COPY src ./src
