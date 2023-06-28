@@ -8,12 +8,13 @@ WORKDIR /app
 
 # Copy the pom.xml file to the container
 COPY pom.xml .
+COPY . .
 
 # Download the dependencies
 RUN mvn dependency:go-offline
 
 # Copy the rest of the project files to the container
-COPY . .
+#COPY . .
 
 # Build the Maven project
 RUN mvn package
