@@ -11,7 +11,15 @@ WORKDIR /usr/src/app
 COPY . .
 
 # Install Maven
-RUN apt-get update && apt-get install -y maven
+RUN apt-get update && \
+    apt-get install -y gnupg && \
+    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3B4FE6ACC0B21F32 && \
+    echo "deb http://ppa.launchpad.net/openjdk-r/ppa/ubuntu bionic main" | tee /etc/apt/sources.list.d/openjdk-r-ppa.list && \
+    echo "deb http://ppa.launchpad.net/linuxuprising/java/ubuntu bionic main" | tee /etc/apt/sources.list.d/linuxuprising-java.list && \
+    apt-get update && \
+    echo oracle-java11-installer shared/accepted-oracle-license-v1-2 select true | /usr/bin/debconf-set-selections && \
+    apt-get install -y oracle-java11-installer && \
+    apt-get install -y maven
 
 # Build the project
 RUN mvn clean package && \
@@ -22,4 +30,3 @@ EXPOSE 8082
 
 # Start Tomcat
 CMD ["catalina.sh", "run"]
-
