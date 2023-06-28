@@ -1,6 +1,5 @@
 # Use a base image with Java pre-installed
-FROM maven:3.8.4-openjdk-11-slim AS build
-
+FROM maven:3.5-jdk-8-alpine as build
 # Set the working directory inside the container
 WORKDIR /usr/src/app
 
