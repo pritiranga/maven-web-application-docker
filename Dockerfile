@@ -1,30 +1,17 @@
-# Base image with JDK and Maven
-FROM maven:3.8.3-openjdk-11-slim AS build
+# Use a base image with Apache Tomcat and Java pre-installed
+FROM tomcat:9-jdk11-openjdk-slim
 
-# Set the working directory in the container
-WORKDIR /app
+# Remove the default ROOT application
+RUN rm -rf /usr/local/tomcat/webapps/ROOT
 
-# Copy the POM file to the container
-COPY pom.xml .
+# Set the working directory inside the container
+WORKDIR /usr/local/tomcat/webapps
 
-# Download the project dependencies
-RUN mvn dependency:go-offline
+# Copy the project's WAR file to the container
+COPY target/maven-web-application.war ROOT.war
 
-# Copy the application source code to the container
-COPY src ./src
-COPY . .
+# Expose the port on which Tomcat will run (change if necessary)
+EXPOSE 8082
 
-# Build the application
-RUN mvn package -DskipTests
-
-# Create a new image with a smaller base image
-FROM adoptopenjdk:11-jre-hotspot
-
-# Set the working directory in the container
-WORKDIR /app
-
-# Copy the built JAR file from the previous stage to the container
-COPY --from=build /app/target/maven-web-application.jar ./app.jar
-
-# Set the command to run your application
-CMD ["java", "-jar", "app.jar"]
+# Start Tomcat
+CMD ["catalina.sh", "run"]
