@@ -42,6 +42,7 @@ pipeline {
             }
 
             steps {
+                sh 'mvn clean package'
                 sh 'docker build -t k8_app:latest -f Dockerfile .'
             }
         }
