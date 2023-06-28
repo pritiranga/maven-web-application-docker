@@ -7,14 +7,11 @@ WORKDIR /usr/src/app
 # Copy the pom.xml file to the container
 COPY pom.xml .
 
-# Download the project dependencies
-RUN mvn dependency:go-offline
-
 # Copy the project source code to the container
 COPY src ./src
 
-# Build the project
-RUN mvn clean package
+# Build the project and package the WAR file
+RUN mvn package -DskipTests
 
 # Use a lightweight base image with Tomcat
 FROM tomcat:8.5.77-jdk11-openjdk-slim
@@ -23,7 +20,7 @@ FROM tomcat:8.5.77-jdk11-openjdk-slim
 RUN rm -rf /usr/local/tomcat/webapps/ROOT
 
 # Copy the built WAR file from the build stage to the Tomcat webapps directory
-COPY --from=build /usr/src/app/target/*.war /usr/local/tomcat/webapps/maven-web-application.war
+COPY --from=build /usr/src/app/target/*.war /usr/local/tomcat/webapps/ROOT.war
 
 # Expose the port on which Tomcat will run
 EXPOSE 8082
