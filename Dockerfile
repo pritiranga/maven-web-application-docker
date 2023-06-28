@@ -10,6 +10,8 @@ WORKDIR /app
 COPY pom.xml .
 
 # Download the dependencies
+RUN rm -rf ~/.m2
+
 RUN mvn dependency:go-offline
 
 # Copy the rest of the project files to the container
