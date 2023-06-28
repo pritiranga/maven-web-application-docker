@@ -11,7 +11,7 @@ COPY pom.xml .
 COPY src ./src
 
 # Build the project and package the WAR file
-RUN mvn clean install
+RUN mvn clean package
 
 # Use a lightweight base image with Tomcat
 FROM tomcat:8.5.77-jdk11-openjdk-slim
