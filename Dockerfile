@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 COPY pom.xml .
 
 # Download the project dependencies
-RUN mvn dependency:go-offline -B -U
+RUN mvn dependency:go-offline
 
 # Copy the project source code to the container
 COPY src ./src
