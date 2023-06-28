@@ -6,10 +6,9 @@ WORKDIR /usr/src/app
 
 # Copy the pom.xml file to the container
 COPY pom.xml .
-COPY . .
 
 # Download the project dependencies
-RUN mvn dependency:go-offline -B
+RUN mvn dependency:go-offline -B -U
 
 # Copy the project source code to the container
 COPY src ./src
