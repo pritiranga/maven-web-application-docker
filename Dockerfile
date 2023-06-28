@@ -8,7 +8,7 @@ RUN rm -rf /usr/local/tomcat/webapps/ROOT
 WORKDIR /usr/local/tomcat/webapps
 
 # Copy the project's WAR file to the container
-COPY target/maven-web-application.war ROOT.war
+COPY target/maven-web-application.war maven-web-application.war
 
 # Expose the port on which Tomcat will run (change if necessary)
 EXPOSE 8082
